@@ -275,7 +275,45 @@ class SpotifyApp:
             return
         threading.Thread(target=self.gerar_playlist, daemon=True).start()
 
-    
+    def gerar_playlist(self):
+        emocao_selecionada = self.combo_emocao.get()
+        termo_busca = MAPA_EMOCOES[emocao_selecionada]
+        data_atual = datetime.now().strftime("%Y-%m-%d %H:%M")
+        nome_playlist = f"Vibe {emocao_selecionada} - Auto"
+
+        try:
+            resultados = self.sp.search(q=termo_busca, type="track", limit=15)
+            
+            if not resultados or "tracks" not in resultados or not resultados["tracks"]["items"]:
+                messagebox.showwarning("Aviso", "Nenhuma música foi encontrada para essa busca.")
+                return
+
+            faixas = resultados["tracks"]["items"]
+            uris = [faixa["uri"] for faixa in faixas if "uri" in faixa]
+
+            if not uris:
+                messagebox.showwarning("Aviso", "Nenhuma faixa válida foi localizada.")
+                return
+
+            user_id = self.sp.current_user()["id"]
+            playlist = self.sp.user_playlist_create(
+                user=user_id,
+                name=nome_playlist,
+                public=True,
+                description=f"Playlist criada automaticamente para a vibe: {emocao_selecionada}",
+            )
+
+            self.sp.playlist_add_items(playlist_id=playlist["id"], items=uris)
+
+            salvar_historico(data_atual, emocao_selecionada, nome_playlist, len(uris))
+            self.root.after(0, self.atualizar_tabela)
+
+            messagebox.showinfo(
+                "Sucesso!", f"Playlist '{nome_playlist}' criada no seu Spotify com sucesso!"
+            )
+
+        except Exception as e:
+            messagebox.showerror("Erro", f"Falha ao criar a playlist: {e}")
 
     def atualizar_tabela(self):
         for item in self.tabela.get_children():
