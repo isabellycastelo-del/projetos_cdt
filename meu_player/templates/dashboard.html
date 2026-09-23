@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Sintonia</title>
+
+    <style>
+
+        :root {
+
+            --fundo: #fff0f6;
+            --card: #ffffff;
+            --texto: #3d1f2f;
+            --campo: #ffffff;
+            --borda: #d98caf;
+
+            --botao: #a83f6f;
+            --botao-hover: #8d315c;
+
+        }
+
+        body.escuro {
+
+            --fundo: #24131d;
+            --card: #321923;
+            --texto: #f9dce9;
+            --campo: #29151f;
+            --borda: #71334f;
+
+            --botao: #9e416b;
+            --botao-hover: #b94f7e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            background: var(--fundo);
+            color: var(--texto);
+
+            font-family: Arial, sans-serif;
+
+            transition:
+                background 0.3s,
+                color 0.3s;
+        }
+
+        header {
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 30px;
+
+            background: var(--card);
+
+            border-bottom:
+                1px solid var(--borda);
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .acoes {
+
+            display: flex;
+            gap: 10px;
+        }
+
+        .tema,
+        .sair {
+
+            padding: 9px 14px;
+
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+
+            background: var(--card);
+            color: var(--texto);
+
+            text-decoration: none;
+
+            cursor: pointer;
+        }
+
+        .conteudo {
+
+            width: 600px;
+            max-width: 90%;
+
+            margin: 50px auto;
+        }
+
+        .card {
+
+            padding: 30px;
+
+            border-radius: 16px;
+
+            background: var(--card);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        label {
+
+            display: block;
+
+            margin-top: 18px;
+            margin-bottom: 7px;
+
+            font-weight: bold;
+        }
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+
+            background: var(--campo);
+            color: var(--texto);
+
+            font-size: 15px;
+        }
+
+        .localizacao {
+
+            margin-top: 10px;
+
+            padding: 10px;
+
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+
+            background: transparent;
+            color: var(--texto);
+
+            cursor: pointer;
+        }
+
+        .localizacao:hover {
+
+            background: var(--botao);
+            color: white;
+        }
+
+        .status {
+
+            margin-top: 8px;
+
+            font-size: 14px;
+        }
+
+        .gerar {
+
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: var(--botao);
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .gerar:hover {
+            background: var(--botao-hover);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Sintonia</h1>
+
+        <div class="acoes">
+
+            <button
+                class="tema"
+                onclick="alternarTema()"
+                id="botaoTema">
+                Modo escuro
+            </button>
+
+            <a
+                class="sair"
+                href="{{ url_for('logout') }}">
+                Sair
+            </a>
+
+        </div>
+
+    </header>
+
+    <main class="conteudo">
+
+        <div class="card">
+
+            <h2>
+                Olá, {{ usuario }}
+            </h2>
+
+            <p>
+                Crie uma playlist de acordo com
+                seu momento.
+            </p>
+
+            <form
+                method="POST"
+                action="{{ url_for('gerar') }}">
+
+                <label>
+                    Cidade
+                </label>
+
+                <input
+                    type="text"
+                    id="cidade"
+                    name="cidade"
+                    placeholder="Digite uma cidade">
+
+                <button
+                    type="button"
+                    class="localizacao"
+                    onclick="usarLocalizacao()">
+
+                    Usar minha localização
+
+                </button>
+
+                <div
+                    class="status"
+                    id="statusLocalizacao">
+                </div>
+
+                <input
+                    type="hidden"
+                    id="latitude"
+                    name="latitude">
+
+                <input
+                    type="hidden"
+                    id="longitude"
+                    name="longitude">
+
+                <label>
+                    Humor
+                </label>
+
+                <select
+                    name="humor">
+
+                    <option value="Feliz">
+                        Feliz
+                    </option>
+
+                    <option value="Triste">
+                        Triste
+                    </option>
+
+                    <option value="Calmo">
+                        Calmo
+                    </option>
+
+                    <option value="Romântico">
+                        Romântico
+                    </option>
+
+                    <option value="Animado">
+                        Animado
+                    </option>
+
+                    <option value="Melancólico">
+                        Melancólico
+                    </option>
+
+                    <option value="Energético">
+                        Energético
+                    </option>
+
+                </select>
+
+                <label>
+                    Artista favorito
+                </label>
+
+                <input
+                    type="text"
+                    name="artista"
+                    placeholder="Opcional">
+
+                <button
+                    class="gerar"
+                    type="submit">
+
+                    Criar playlist
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        function alternarTema() {
+
+            document.body.classList.toggle("escuro");
+
+            const escuro =
+                document.body.classList.contains("escuro");
+
+            localStorage.setItem(
+                "temaSintonia",
+                escuro ? "escuro" : "claro"
+            );
+
+            document.getElementById(
+                "botaoTema"
+            ).textContent =
+                escuro
+                    ? "Modo claro"
+                    : "Modo escuro";
+        }
+
+
+        if (
+            localStorage.getItem("temaSintonia")
+            === "escuro"
+        ) {
+
+            document.body.classList.add("escuro");
+
+            document.getElementById(
+                "botaoTema"
+            ).textContent = "Modo claro";
+        }
+
+
+        function usarLocalizacao() {
+
+            const status =
+                document.getElementById(
+                    "statusLocalizacao"
+                );
+
+            if (!navigator.geolocation) {
+
+                status.textContent =
+                    "Seu navegador não permite localização.";
+
+                return;
+            }
+
+            status.textContent =
+                "Obtendo sua localização...";
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(posicao) {
+
+                    const latitude =
+                        posicao.coords.latitude;
+
+                    const longitude =
+                        posicao.coords.longitude;
+
+                    document.getElementById(
+                        "latitude"
+                    ).value = latitude;
+
+                    document.getElementById(
+                        "longitude"
+                    ).value = longitude;
+
+                    status.textContent =
+                        "Localização definida. O clima será obtido pelas coordenadas.";
+
+                },
+
+                function() {
+
+                    status.textContent =
+                        "Não foi possível obter sua localização. Digite a cidade manualmente.";
+
+                }
+
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
