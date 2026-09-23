@@ -1,3 +1,6 @@
+"""
+sem login e com biblioteca faker
+"""
 import json
 import sqlite3
 import threading

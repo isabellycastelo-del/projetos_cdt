@@ -1,3 +1,7 @@
+"""
+Tem a bilioteca faker e json, tenta gerar playlist no Spotify porém não tem login e da erro.
+"""
+
 import json
 import sqlite3
 import tkinter as tk

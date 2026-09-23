@@ -1,0 +1,79 @@
+[
+    {
+        "data_criacao": "2026-09-13 19:54",
+        "humor": "feliz",
+        "clima": "chuvoso",
+        "nome_playlist": "Sons para um Dia Chuvoso (Feliz)",
+        "total_musicas": 10
+    },
+    {
+        "data_criacao": "2026-09-06 22:52",
+        "humor": "nostalgico",
+        "clima": "ensolarado",
+        "nome_playlist": " Nostalgico de Verão",
+        "total_musicas": 6
+    },
+    {
+        "data_criacao": "2026-09-13 19:49",
+        "humor": "romantico",
+        "clima": "chuvoso",
+        "nome_playlist": "Sons para um Dia Chuvoso (Romantico)",
+        "total_musicas": 11
+    },
+    {
+        "data_criacao": "2026-09-10 08:29",
+        "humor": "romantico",
+        "clima": "nublado",
+        "nome_playlist": "Sessão Romantico em Dia Nublado",
+        "total_musicas": 12
+    },
+    {
+        "data_criacao": "2026-09-07 09:50",
+        "humor": "feliz",
+        "clima": "chuvoso",
+        "nome_playlist": "Sons para um Dia Chuvoso (Feliz)",
+        "total_musicas": 8
+    },
+    {
+        "data_criacao": "2026-09-08 21:28",
+        "humor": "feliz",
+        "clima": "chuvoso",
+        "nome_playlist": "Sons para um Dia Chuvoso (Feliz)",
+        "total_musicas": 12
+    },
+    {
+        "data_criacao": "2026-09-05 23:43",
+        "humor": "feliz",
+        "clima": "ensolarado",
+        "nome_playlist": "Vibe Feliz de Verão",
+        "total_musicas": 5
+    },
+    {
+        "data_criacao": "2026-09-13 02:19",
+        "humor": "feliz",
+        "clima": "ensolarado",
+        "nome_playlist": "Vibe: Feliz (At)",
+        "total_musicas": 8
+    },
+    {
+        "data_criacao": "2026-09-02 09:10",
+        "humor": "calmo",
+        "clima": "chuvoso",
+        "nome_playlist": "Vibe: Calmo (Saepe)",
+        "total_musicas": 7
+    },
+    {
+        "data_criacao": "2026-09-10 14:36",
+        "humor": "calmo",
+        "clima": "ensolarado",
+        "nome_playlist": "Vibe: Calmo (Cupiditate)",
+        "total_musicas": 7
+    },
+    {
+        "data_criacao": "2026-09-07 09:35",
+        "humor": "feliz",
+        "clima": "ensolarado",
+        "nome_playlist": "Vibe: Feliz (Autem)",
+        "total_musicas": 12
+    }
+]

@@ -1,0 +1,29 @@
+[
+    {
+        "id": "20260923100410232492",
+        "materia": "Química",
+        "tarefa": "Leitura e anotações",
+        "data": "27/09/2026",
+        "prioridade": "Alta",
+        "status": "Pendente",
+        "criada_em": "23/09/2026 10:04:10"
+    },
+    {
+        "id": "20260923100401553264",
+        "materia": "Biologia",
+        "tarefa": "Trabalho de Pesquisa sobre Mutação genética",
+        "data": "30/09/2026",
+        "prioridade": "Média",
+        "status": "Pendente",
+        "criada_em": "23/09/2026 10:04:01"
+    },
+    {
+        "id": "20260923100211623168",
+        "materia": "Português",
+        "tarefa": "Seminário em grupo de Romantismo",
+        "data": "23/09/2026",
+        "prioridade": "Alta",
+        "status": "Concluída",
+        "criada_em": "23/09/2026 10:02:11"
+    }
+]

@@ -1,3 +1,7 @@
+"""
+Código com a biblioteca faker porém sem a opção de fazer login na conta, somente gera playlists e emoções.
+"""
+
 import json
 import sqlite3
 import threading
